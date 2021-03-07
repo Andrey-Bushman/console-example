@@ -1,5 +1,5 @@
 # readme.md
-
+This project code sources are hosted on [GitHub](https://github.com/Andrey-Bushman/console-example.git).
 ## About
 This example shows how to run the console application through the `docker` and communicate with it:
   * Console application can read/write the host machine files. It is convenient way for passing big data into the application and getting the result of it handling.
@@ -9,11 +9,13 @@ This example shows how to run the console application through the `docker` and c
 ## Build the docker-image
 Run the command in PowerShell:
 ```
+git clone https://github.com/Andrey-Bushman/console-example.git
+cd console-example
 docker build -t console-example .
 ```
 
 ## Run the container on Windows OS
-Run the commands:
+Run the commands on PowerShell terminal:
 ```
 $inputDir = $(pwd).Path + "\input:/app/input"
 $outputDir = $(pwd).Path + "\output:/app/output"
