@@ -9,9 +9,12 @@ namespace ConsoleExample
     {
         static void Main(string[] args)
         {
-            // Get the application arguments. Two arguments are expected:
+            // Get the application arguments passed through docker. 
+            // Two arguments are expected:
             // First argument is the input file name (without the directory path).
+            // It is to exists on host machine.
             // Second argument is the output file name (without the directory path).
+            // It will be created by this application and saved on host machine.
             if(args.Length != 2) {
                 throw new ArgumentException("Application expected two arguments.");
             }
@@ -21,20 +24,22 @@ namespace ConsoleExample
                 WriteLine($"Arg #{argIndex++}: {item}");
             }
 
-            // Get the "MESSAGE" environment value
+            // Get the "MESSAGE" environment value passed through docker
             var envName = "MESSAGE";
             var envValue = Environment.GetEnvironmentVariable(envName, 
                 EnvironmentVariableTarget.Process);
             WriteLine($"Environment variable value: {envValue}");
 
-            // The input directory. It contains an input file.
-            // Expected that this directory will be mapped throught volume.
+            // The input data directory. It is to contain an expected input file.
+            // Expected that this directory will be mapped throught docker-volume.
             var inputDir = Directory.CreateDirectory("./input");
             var inputFile = Path.Combine(inputDir.FullName, args[0]);
 
-            // The output directory. The result file will be created here.
-            // Expected that this directory will be mapped throught volume.
-            var outputDir = Directory.CreateDirectory("./output");
+            // The output data directory. The result file will be saved here.
+            // Expected that this directory will be mapped through docker-volume,
+            // otherwise you can't get result file.
+            var outDirName = "./output";
+            var outputDir = Directory.CreateDirectory(outDirName);
             var outputFile = Path.Combine(outputDir.FullName, args[1]);
 
             Write("Your name: "); // Bob, Jack, etc.
@@ -44,6 +49,7 @@ namespace ConsoleExample
                 var content = File.ReadAllText(inputFile, Encoding.UTF8)
                     .Replace("<name>", name);
                 File.WriteAllText(outputFile, content, Encoding.UTF8);
+                WriteLine($"Result file: {outDirName}/{args[1]}");
             }
             else {
                 WriteLine($"The input file '{inputFile}' not found.");
