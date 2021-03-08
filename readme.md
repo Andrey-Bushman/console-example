@@ -29,8 +29,9 @@ Arg #0: input-data.txt
 Arg #1: output-data.txt
 Environment variable value: Hello World.
 Your name: Jack
+Result file: ./output/output-data.txt
 ```
-Also pay attention that the `.\output\output-data.txt` file was created on the host machine.
+Pay attention the `./output/output-data.txt` file was created on the host machine.
 
 **NOTE**  
 If the `.\input` and `.\output` directories are not exist 
