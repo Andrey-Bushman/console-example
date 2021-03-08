@@ -3,7 +3,7 @@ This project code sources are hosted on [GitHub](https://github.com/Andrey-Bushm
 ## About
 This example shows how to run the console application through the `docker` and communicate with it:
   1. Console application can read/write the host machine files. It is convenient way for passing big data into the application and getting the result of it handling.
-  2. Initializing the environment variable for console application process. This is way for passing a little bit of data into the application (URL, port, token, etc.).
+  2. Initializing the environment variable of console application process. This is way for passing a little bit of data into the application (URL, port, token, etc.).
   3. Passing data as the console application arguments.
 
 ## Build the docker-image
