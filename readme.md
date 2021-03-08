@@ -21,7 +21,7 @@ $inputDir = $(pwd).Path + "\input:/app/input"
 $outputDir = $(pwd).Path + "\output:/app/output"
 docker run -it --rm --name console-example -e "MESSAGE=Hello World."  -v $inputDir -v $outputDir console-example input-data.txt, output-data.txt
 ```
-### What do these commands?
+### What does these commands do?
   1. Our container works in *interactive mode* (look at the `-it` parameter). It allows as to pass a name (or any other text) 
   when the application asks us through the console.
   1. Our docker-container will be deleted when its console application finished (look at the `--rm` parameter).
