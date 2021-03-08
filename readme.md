@@ -21,6 +21,18 @@ $inputDir = $(pwd).Path + "\input:/app/input"
 $outputDir = $(pwd).Path + "\output:/app/output"
 docker run -it --rm --name console-example -e "MESSAGE=Hello World."  -v $inputDir -v $outputDir console-example input-data.txt, output-data.txt
 ```
+### What do these commands?
+  1. Our container works in *interactive mode* (look at the `-it` parameter). It allows as to pass a name (or any other text) 
+  when the application asks us through the console.
+  1. Our docker-container will be deleted when its console application finished (look at the `--rm` parameter).
+  1. Here we created the docker-container with *the same* name like its docker-image: *console-example* 
+  (look at the `--name` parameter value).
+  1. Also we created the `MESSAGE` environment variable in the container and initialized it by the *Hello World.* value 
+  (look at the `-e` parameter value).
+  1. We passed the *input-data.txt* and *output-data.txt* strings as *arguments* of our console application that 
+  will be launched inside of our docker-container.
+  1. Addidional, througt the `$inputDir` and `$outputDir` we mapped two local directories on two docker-container 
+  directories on PowerShell console (look at the `-v` parameters values).
 
 ## Result
 The result:
